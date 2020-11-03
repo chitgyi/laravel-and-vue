@@ -1,0 +1,63 @@
+@url = http://localhost:8000/api/v1
+
+###
+
+POST  {{url}}/register
+content-type: application/json
+
+{
+    "name": "Aung Aung",
+    "email": "halo@student.com",
+    "password": "password",
+}
+
+### 
+
+POST {{url}}/login
+Content-Type: : application/json
+
+{
+    "email": "halo@student.com",
+    "password": "password"
+}
+
+###
+
+GET  {{url}}/profile
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQzOTgxMjcsImV4cCI6MTYwNDQwMTcyNywibmJmIjoxNjA0Mzk4MTI3LCJqdGkiOiJIWHFyRUhvYUEzNTNKYnJ1Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UG3WsimgihskrN6EVE-krk5-kRdtMTyq8cI6tFPYIt4
+
+###
+POST  {{url}}/address
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQzOTgxMjcsImV4cCI6MTYwNDQwMTcyNywibmJmIjoxNjA0Mzk4MTI3LCJqdGkiOiJIWHFyRUhvYUEzNTNKYnJ1Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UG3WsimgihskrN6EVE-krk5-kRdtMTyq8cI6tFPYIt4
+
+{
+    "country": "Myanmar",
+    "city": "Meiktila",
+    "address": "Address"
+}
+
+###
+
+POST  {{url}}/article
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQzOTgxMjcsImV4cCI6MTYwNDQwMTcyNywibmJmIjoxNjA0Mzk4MTI3LCJqdGkiOiJIWHFyRUhvYUEzNTNKYnJ1Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UG3WsimgihskrN6EVE-krk5-kRdtMTyq8cI6tFPYIt4
+
+{
+    "title": "Chit Ye Aung",
+    "body": "Chit Ye Aung's Body"
+}
+
+
+###
+
+GET  {{url}}/articles?page=2
+Content-Type: application/json
+
+
+###
+
+GET  {{url}}/myarticles?page=2
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQ0MDIwNzgsImV4cCI6MTYwNDQwNTY3OCwibmJmIjoxNjA0NDAyMDc4LCJqdGkiOiI2RkRFMGc2RllCMWc3V1hTIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.c1Iz1BY78AjlZzpvoNjx-lypRcS03h1TtdNZlLC4lKs

@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  mariadb:
+    image: 'docker.io/bitnami/mariadb:10.2-debian-10'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=chitgyi
+      - MARIADB_DATABASE=cya_db
+      - MARIADB_PASSWORD=cya123
+
+  myapp:
+    tty: true
+    mage: "php:7.3"
+    depends_on:
+      - mariadb
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+    command: 'php artisan serve'
+    # privileged: true # Privileged mode could be required to run this container under Windows
