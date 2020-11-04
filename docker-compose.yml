@@ -1,22 +1,60 @@
 version: '2'
-
 services:
-  mariadb:
-    image: 'docker.io/bitnami/mariadb:10.2-debian-10'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_USER=chitgyi
-      - MARIADB_DATABASE=cya_db
-      - MARIADB_PASSWORD=cya123
 
-  myapp:
-    tty: true
-    mage: "php:7.3"
-    depends_on:
-      - mariadb
-    ports:
-      - 8000:8000
+  php:
+    image: jguyomard/laravel-php:7.3
     volumes:
-      - ./:/app
-    command: 'php artisan serve'
-    # privileged: true # Privileged mode could be required to run this container under Windows
+      - ./src:/var/www/
+      - $HOME/.composer/:$HOME/.composer/
+    environment:
+      - "DB_HOST=mysql"
+      - "DB_DATABASE=cya_db"
+      - "DB_USERNAME=chitgyi"
+      - "DB_PASSWORD=cya123"
+      - "REDIS_HOST=redis"
+      - "REDIS_PORT=6379"
+
+  nginx:
+    image: jguyomard/laravel-nginx:1.13
+    volumes_from:
+      - php
+    ports:
+      - 8080:80
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=secret"
+      - "MYSQL_DATABASE=cya_db"
+      - "MYSQL_USER=chitgyi"
+      - "MYSQL_PASSWORD=cya123"
+#    ports:
+#        - "3306:3306"
+
+#  pgsql:
+#    image: postgres:9.6-alpine
+#    volumes:
+#      - pgsqldata:/var/lib/postgresql/data
+#    environment:
+#      - "POSTGRES_DB=homestead"
+#      - "POSTGRES_USER=homestead"
+#      - "POSTGRES_PASSWORD=homestead"
+#    ports:
+#        - "5432:5432"
+
+  redis:
+    image: redis:4.0-alpine
+    command: redis-server --appendonly yes
+#    ports:
+#        - "6379:6379"
+
+#  elastic:
+#    image: elasticsearch:5.5-alpine
+#    ports:
+#        - "9200:9200"
+
+volumes:
+  mysqldata:
+  pgsqldata:
