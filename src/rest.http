@@ -1,4 +1,4 @@
-@url = http://localhost:8000/api/v1
+@url = http://[::1]:8080/api/v1
 
 ###
 
@@ -8,7 +8,7 @@ content-type: application/json
 {
     "name": "Aung Aung",
     "email": "halo@student.com",
-    "password": "password",
+    "password": "password"
 }
 
 ### 
@@ -25,12 +25,12 @@ Content-Type: : application/json
 
 GET  {{url}}/profile
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQzOTgxMjcsImV4cCI6MTYwNDQwMTcyNywibmJmIjoxNjA0Mzk4MTI3LCJqdGkiOiJIWHFyRUhvYUEzNTNKYnJ1Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UG3WsimgihskrN6EVE-krk5-kRdtMTyq8cI6tFPYIt4
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9bOjoxXTo4MDgwXC9hcGlcL3YxXC9yZWdpc3RlciIsImlhdCI6MTYwNDQ2ODY5NiwiZXhwIjoxNjA0NDcyMjk2LCJuYmYiOjE2MDQ0Njg2OTYsImp0aSI6IlM0YVR3SUlMZTNzeWRYZnQiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8zzdKU7Pa479nGKMWMKJsczx8Mskeq0OiKoqprdcXKg
 
 ###
 POST  {{url}}/address
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQzOTgxMjcsImV4cCI6MTYwNDQwMTcyNywibmJmIjoxNjA0Mzk4MTI3LCJqdGkiOiJIWHFyRUhvYUEzNTNKYnJ1Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UG3WsimgihskrN6EVE-krk5-kRdtMTyq8cI6tFPYIt4
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9bOjoxXTo4MDgwXC9hcGlcL3YxXC9yZWdpc3RlciIsImlhdCI6MTYwNDQ2ODY5NiwiZXhwIjoxNjA0NDcyMjk2LCJuYmYiOjE2MDQ0Njg2OTYsImp0aSI6IlM0YVR3SUlMZTNzeWRYZnQiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8zzdKU7Pa479nGKMWMKJsczx8Mskeq0OiKoqprdcXKg
 
 {
     "country": "Myanmar",
@@ -42,11 +42,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvX
 
 POST  {{url}}/article
 Content-Type: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE2MDQzOTgxMjcsImV4cCI6MTYwNDQwMTcyNywibmJmIjoxNjA0Mzk4MTI3LCJqdGkiOiJIWHFyRUhvYUEzNTNKYnJ1Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UG3WsimgihskrN6EVE-krk5-kRdtMTyq8cI6tFPYIt4
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9bOjoxXTo4MDgwXC9hcGlcL3YxXC9yZWdpc3RlciIsImlhdCI6MTYwNDQ2ODY5NiwiZXhwIjoxNjA0NDcyMjk2LCJuYmYiOjE2MDQ0Njg2OTYsImp0aSI6IlM0YVR3SUlMZTNzeWRYZnQiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8zzdKU7Pa479nGKMWMKJsczx8Mskeq0OiKoqprdcXKg
 
 {
-    "title": "Chit Ye Aung",
-    "body": "Chit Ye Aung's Body"
+    "title": "Velit eu deserunt eiusmod do elit ipsum sunt nulla.",
+    "body": "Magna pariatur amet quis proident sint. Id incididunt enim cillum tempor ad sunt esse consequat consectetur nulla culpa aute. Consequat consectetur non ea dolor eiusmod non ipsum dolore non irure. Sit commodo culpa labore aliqua non reprehenderit. Aliqua ipsum dolore commodo in qui."
 }
 
 
