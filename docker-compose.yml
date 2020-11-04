@@ -16,8 +16,9 @@ services:
 
   nginx:
     image: jguyomard/laravel-nginx:1.13
-    volumes_from:
-      - php
+    volumes:
+      - ./src:/var/www/
+      - nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 8080:80
 
