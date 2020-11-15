@@ -1,61 +1,41 @@
-version: '2'
-services:
+version: '3'
 
-  php:
-    image: jguyomard/laravel-php:7.3
-    volumes:
-      - ./src:/var/www/
-      - $HOME/.composer/:$HOME/.composer/
-    environment:
-      - "DB_HOST=mysql"
-      - "DB_DATABASE=cya_db"
-      - "DB_USERNAME=chitgyi"
-      - "DB_PASSWORD=cya123"
-      - "REDIS_HOST=redis"
-      - "REDIS_PORT=6379"
+networks: 
+    dev:
 
-  nginx:
-    image: jguyomard/laravel-nginx:1.13
-    volumes:
-      - ./src:/var/www/
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 8080:80
+services: 
+    nginx:
+        build: nginx
+        container_name: nginx_server
+        ports: 
+            - 8000:80
+        links: 
+            - php
+        volumes: 
+            - ./src:/var/www/chityeaung
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        networks: 
+            - dev
 
-  mysql:
-    image: mysql:5.7
-    volumes:
-      - mysqldata:/var/lib/mysql
-    environment:
-      - "MYSQL_ROOT_PASSWORD=secret"
-      - "MYSQL_DATABASE=cya_db"
-      - "MYSQL_USER=chitgyi"
-      - "MYSQL_PASSWORD=cya123"
-#    ports:
-#        - "3306:3306"
+    php:
+        build: php
+        container_name: php_fpm
+        volumes: 
+            - ./src:/var/www/chityeaung
+        networks: 
+            - dev
 
-#  pgsql:
-#    image: postgres:9.6-alpine
-#    volumes:
-#      - pgsqldata:/var/lib/postgresql/data
-#    environment:
-#      - "POSTGRES_DB=homestead"
-#      - "POSTGRES_USER=homestead"
-#      - "POSTGRES_PASSWORD=homestead"
-#    ports:
-#        - "5432:5432"
+    db:
+        image: mysql
+        container_name: mysql_db
+        environment: 
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_USER: chitgyi
+            MYSQL_PASSWORD: secret
+            MYSQL_DATABASE: test_db
+        networks: 
+            - dev
+    
+    
 
-  redis:
-    image: redis:4.0-alpine
-    command: redis-server --appendonly yes
-#    ports:
-#        - "6379:6379"
-
-#  elastic:
-#    image: elasticsearch:5.5-alpine
-#    ports:
-#        - "9200:9200"
-
-volumes:
-  mysqldata:
-  pgsqldata:
+        
